@@ -41,7 +41,7 @@ jobs:
     needs: build
     environment:
       name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      url:  'applicationtest.azurewebsites.net'
     
     steps:
       - name: Download artifact from build job
@@ -57,6 +57,4 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'ApplicationTest'
-          slot-name: 'Production'
-          package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C8522815896E4DF9BAD08617B55CA05C }}
+          publish-profile: ${{ secrets.TEST_BACKEND }}
